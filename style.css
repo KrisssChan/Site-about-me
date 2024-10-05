@@ -91,3 +91,12 @@ nav{
     text-align: right;
     font-size: 50px;
 }
+
+th{
+    background-color: rgba(193, 186, 221, 0.486);
+    cursor: pointer;
+}
+
+tr:hover {
+    background-color: rgba(203, 171, 248, 0.486);
+}
