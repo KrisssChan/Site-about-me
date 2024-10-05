@@ -30,8 +30,7 @@
         "Технология разработки и защиты баз данных", "Учебная практика".
         <br><br>Я занимаюсь 3D моделированием в Blender3D, также работаю в японских программах MikuMikuDance и PMXEditor. Данные программы позволяют собирать моделей и делать 3D анимации. 
         В связи с этим у меня есть свой ютуб канал, мой псевдоним <b>Krisss Chan</b>. В дальнейшем я хочу начать развиваться как летсплеер, снимать прохождения игр и просто нарезки смешных моментов. 
-        Помимо всего этого я художник. Рисую арты на бумаге и на компьютере. 
-        <br><br>Еще я немного не ординарная личность. Я крашу волосы в различные цвета, и у меня имеются пока что 2 татуировки. 
+        Помимо всего этого я художник. Рисую арты на бумаге и на компьютере.  
     </p>
         </div>
         <h2 id="2">Мои навыки</h2>
@@ -91,10 +90,10 @@
         </div>
         <h2 id="4">Моя группа</h2>
         <div class="group">
-            <table>
+            <table id="MyTable">
                 <tr>
-                    <th>ФИО</th>
-                    <th>Возраст</th>
+                    <th onclick="sortTable(0)">ФИО</th>
+                    <th onclick="sortTable(1)">Возраст</th>
                     <th>Пол</th>
                     <th>Рост</th>
                     <th>Телефон</th>
@@ -124,6 +123,14 @@
                     <td><a href="tel:+79503375246">+7 (950) 337-52-46</a></td>
                     <td><a href="mailto:samusden@yandex.ru">samusden@yandex.ru</a></td>
                 </tr>
+                <tr>
+                    <td>Мякишев Алексей Денисович</td>
+                    <td>19</td>
+                    <td>Мужской</td>
+                    <td>170</td>
+                    <td><a href="tel:+79509503190">+7 (950) 950-31-90</a></td>
+                    <td><a href="mailto:denisovich.a@internet.ru">denisovich.a@internet.ru</a></td>
+                </tr>
                     
             </table>
         </div>
@@ -131,5 +138,43 @@
                 <a href="#top">↑</a>
             </div>
     </div>
+    <script>
+        function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("MyTable");
+    switching = true;
+    dir = "asc"; // Задаем направление сортировки как восходящее
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;      
+        } else {
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
+    </script>
 </body>
 </html>
